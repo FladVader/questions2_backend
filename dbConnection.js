@@ -188,100 +188,100 @@ const addIdiotQuestion = async(question, url1, answer, url2) => {
     })
 };
 
-const getGamePG = async(id) => {
-    var client = new pg.Client(conString);
-    const gameId = id;
-    console.log(id)
-    return new Promise((resolve, reject) => {
+// const getGamePG = async(id) => {
+//     var client = new pg.Client(conString);
+//     const gameId = id;
+//     console.log(id)
+//     return new Promise((resolve, reject) => {
 
-        client.connect(async function(err) {
+//         client.connect(async function(err) {
 
-            if (err) {
-                return console.error('could not connect to postgres', err);
-            }
-            client.query('SELECT * FROM videogames_v2 WHERE id = $1', [id], function(err, result) {
-                if (err) {
-                    return console.error('error running query', err);
-                }
-                console.log(result.rows);
-                client.end();
-                resolve(result.rows);
-            });
-        })
-    })
-};
+//             if (err) {
+//                 return console.error('could not connect to postgres', err);
+//             }
+//             client.query('SELECT * FROM videogames_v2 WHERE id = $1', [id], function(err, result) {
+//                 if (err) {
+//                     return console.error('error running query', err);
+//                 }
+//                 console.log(result.rows);
+//                 client.end();
+//                 resolve(result.rows);
+//             });
+//         })
+//     })
+// };
 
-const addGamePg = async(title, genre, platform, img) => {
-    var client = new pg.Client(conString);
+// const addGamePg = async(title, genre, platform, img) => {
+//     var client = new pg.Client(conString);
 
-    return new Promise((resolve, reject) => {
+//     return new Promise((resolve, reject) => {
 
-        client.connect(async function(err) {
+//         client.connect(async function(err) {
 
-            if (err) {
-                return console.error('could not connect to postgres', err);
-            }
-            client.query('INSERT INTO videogames_v2 (title, genre, platform, img) VALUES ($1, $2, $3, $4)', [title, genre, platform, img], function(err, result) {
-                if (err) {
-                    return console.error('error running query', err);
-                }
-                console.log(result.rows);
-                client.end();
-                resolve(result.rows);
-            });
-
-
-        })
-    })
-};
-
-const deleteGamePG = async(id) => {
-    var client = new pg.Client(conString);
-    const gameId = id;
-    console.log(id)
-    return new Promise((resolve, reject) => {
-
-        client.connect(async function(err) {
-
-            if (err) {
-                return console.error('could not connect to postgres', err);
-            }
-            client.query('DELETE FROM videogames_v2 WHERE id= $1', [id], function(err, result) {
-                if (err) {
-                    return console.error('error running query', err);
-                }
-                console.log(result.rows);
-                client.end();
-                resolve(result.rows);
-            });
-
-        })
-    })
-};
-
-const updateGamePg = async(id, title, genre, platform, img) => {
-    var client = new pg.Client(conString);
-
-    return new Promise((resolve, reject) => {
-
-        client.connect(async function(err) {
-
-            if (err) {
-                return console.error('could not connect to postgres', err);
-            }
-            client.query('UPDATE videogames_v2 SET title=$1, genre=$2, platform=$3, img=$4 WHERE id= $5', [title, genre, platform, img, id], function(err, result) {
-                if (err) {
-                    return console.error('error running query', err);
-                }
-                console.log(result.rows);
-                client.end();
-                resolve(result.rows);
-            });
+//             if (err) {
+//                 return console.error('could not connect to postgres', err);
+//             }
+//             client.query('INSERT INTO videogames_v2 (title, genre, platform, img) VALUES ($1, $2, $3, $4)', [title, genre, platform, img], function(err, result) {
+//                 if (err) {
+//                     return console.error('error running query', err);
+//                 }
+//                 console.log(result.rows);
+//                 client.end();
+//                 resolve(result.rows);
+//             });
 
 
-        })
-    })
-};
+//         })
+//     })
+// };
+
+// const deleteGamePG = async(id) => {
+//     var client = new pg.Client(conString);
+//     const gameId = id;
+//     console.log(id)
+//     return new Promise((resolve, reject) => {
+
+//         client.connect(async function(err) {
+
+//             if (err) {
+//                 return console.error('could not connect to postgres', err);
+//             }
+//             client.query('DELETE FROM videogames_v2 WHERE id= $1', [id], function(err, result) {
+//                 if (err) {
+//                     return console.error('error running query', err);
+//                 }
+//                 console.log(result.rows);
+//                 client.end();
+//                 resolve(result.rows);
+//             });
+
+//         })
+//     })
+// };
+
+// const updateGamePg = async(id, title, genre, platform, img) => {
+//     var client = new pg.Client(conString);
+
+//     return new Promise((resolve, reject) => {
+
+//         client.connect(async function(err) {
+
+//             if (err) {
+//                 return console.error('could not connect to postgres', err);
+//             }
+//             client.query('UPDATE videogames_v2 SET title=$1, genre=$2, platform=$3, img=$4 WHERE id= $5', [title, genre, platform, img, id], function(err, result) {
+//                 if (err) {
+//                     return console.error('error running query', err);
+//                 }
+//                 console.log(result.rows);
+//                 client.end();
+//                 resolve(result.rows);
+//             });
+
+
+//         })
+//     })
+// };
 
 
 
