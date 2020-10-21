@@ -63,6 +63,25 @@ router.get('/getall/leverdenjaveln', async function(req, res) {
     }
 })
 
+router.post('/add/jagharaldrig', async(req, res) => {
+
+    try {
+        const newStatement = await req.body;
+
+
+        newStatement.statement = req.body.statement;
+
+
+        console.log(newStatement + "= newGame");
+        const addStatement = await database.addNeverHaveiEver(newStatement.statement);
+        res.json(newGame.title + " Added!")
+
+    } catch (error) {
+
+        console.log(error);
+    }
+});
+
 // router.get('/getgamepg/:id/', async(req, res) => {
 //     try {
 //         const game = await database.getGamePG(req.params.id);

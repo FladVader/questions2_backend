@@ -91,6 +91,30 @@ const getAllIsAlive = async() => {
     })
 };
 
+const addNeverHaveiEver = async(stmt) => {
+    var client = new pg.Client(conString);
+
+    return new Promise((resolve, reject) => {
+
+        client.connect(async function(err) {
+
+            if (err) {
+                return console.error('could not connect to postgres', err);
+            }
+            client.query('INSERT INTO jag_har_aldrig (statement) VALUES ($1)', [stmt], function(err, result) {
+                if (err) {
+                    return console.error('error running query', err);
+                }
+                console.log(result.rows);
+                client.end();
+                resolve(result.rows);
+            });
+
+
+        })
+    })
+};
+
 const getGamePG = async(id) => {
     var client = new pg.Client(conString);
     const gameId = id;
@@ -188,4 +212,4 @@ const updateGamePg = async(id, title, genre, platform, img) => {
 
 
 
-module.exports = { getAllMostLikely, getAllNeverHaveiEver, getAllIdiotQuestions, getAllIsAlive };
+module.exports = { getAllMostLikely, getAllNeverHaveiEver, getAllIdiotQuestions, getAllIsAlive, addNeverHaveiEver };
