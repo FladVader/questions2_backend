@@ -190,78 +190,32 @@ const addIdiotQuestion = async(question, url1, answer, url2) => {
 };
 
 
-const addGamePg = async(title, genre, platform, img) => {
+// const addGamePg = async(title, genre, platform, img) => {
 
-    var client = new pg.Client(conString);
+//     var client = new pg.Client(conString);
 
-    return new Promise((resolve, reject) => {
+//     return new Promise((resolve, reject) => {
 
-        client.connect(async function(err) {
+//         client.connect(async function(err) {
 
-            if (err) {
-                return console.error('could not connect to postgres', err);
-            }
-            client.query('INSERT INTO mest_trolig (statement) VALUES ($1)', [stmt], function(err, result) {
-                if (err) {
-                    return console.error('error running query', err);
-                }
+//             if (err) {
+//                 return console.error('could not connect to postgres', err);
+//             }
+//             client.query('INSERT INTO mest_trolig (statement) VALUES ($1)', [stmt], function(err, result) {
+//                 if (err) {
+//                     return console.error('error running query', err);
+//                 }
 
-                client.end();
-                resolve(result.rows);
-            });
-
-
-        })
-    })
-};
-
-const addIsAlive = async(url1, answer, url2) => {
-    var client = new pg.Client(conString);
-
-    return new Promise((resolve, reject) => {
-
-        client.connect(async function(err) {
-
-            if (err) {
-                return console.error('could not connect to postgres', err);
-            }
-            client.query('INSERT INTO lever_den_javeln (url1, answer, url2) VALUES ($1, $2, $3)', [url1, answer, url2], function(err, result) {
-                if (err) {
-                    return console.error('error running query', err);
-                }
-                console.log(result.rows);
-                client.end();
-                resolve(result.rows);
-            });
+//                 client.end();
+//                 resolve(result.rows);
+//             });
 
 
-        })
-    })
-};
-
-const addIdiotQuestion = async(question, url1, answer, url2) => {
-    var client = new pg.Client(conString);
-
-    return new Promise((resolve, reject) => {
-
-        client.connect(async function(err) {
-
-            if (err) {
-                return console.error('could not connect to postgres', err);
-            }
-            client.query('INSERT INTO idiotfragan (question, url1, answer, url2) VALUES ($1, $2, $3, $4)', [question, url1, answer, url2], function(err, result) {
-                if (err) {
-                    return console.error('error running query', err);
-                }
-                console.log(result.rows);
-                client.end();
-                resolve(result.rows);
-            });
+//         })
+//     })
+// };
 
 
-        })
-    })
-};
 
 
 // const getGamePG = async(id) => {
