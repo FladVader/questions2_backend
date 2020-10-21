@@ -74,7 +74,7 @@ router.post('/add/jagharaldrig', async(req, res) => {
 
         console.log(newStatement + "= newGame");
         const addStatement = await database.addNeverHaveiEver(newStatement.statement);
-        res.json(newGame.title + " Added!")
+        res.json(newStatement.statement + " Added!")
 
     } catch (error) {
 
